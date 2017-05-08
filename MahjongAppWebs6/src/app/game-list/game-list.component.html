@@ -1,0 +1,16 @@
+<ul class="games">
+  <li *ngFor="let game of gameList">
+    <div>
+      <label>id: </label>
+      {{game.id}}
+    </div>
+    <div>
+      <label>state: </label>
+      {{game.state}}
+    </div>
+    <div>
+      <label>createdBy: </label>
+      {{game.createdBy.name}}
+    </div>
+  </li>
+</ul>
