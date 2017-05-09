@@ -10,6 +10,6 @@ export class Game {
   createdBy:   User;
   minPlayers:  number;
   maxPlayers:  number;
-  // players
+  players:     [User];
   state:       string;
 }
