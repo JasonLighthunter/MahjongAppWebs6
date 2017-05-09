@@ -4,52 +4,74 @@ import { Game } from '../models/game';
 
 const GAMES: Game[] = [
 {
-  '_id': '5903bdf9c240d4001158bf24',
-  'createdOn': '2017-04-28T22:11:05.436Z',
+  '_id': '5910cc460c6b76001171c548',
   'createdBy': {
-    '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts'
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans'
   },
-  'maxPlayers': 32,
-  'minPlayers': 2,
+  'createdOn': '2017-05-08T19:51:34.400Z',
+  'gameTemplate': {
+    '_id': 'Snake',
+    'id':  'Snake'
+  },
+  'players': [
+  {
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans',
+  },
+  {
+    '_id': 'wm.aarts@student.avans.nl',
+    'name': 'Wouter Aarts',
+  }
+  ],
+  'maxPlayers': 5,
+  'minPlayers': 1,
   'state': 'open',
-  'id': '5903bdf9c240d4001158bf24'
+  'id': '5910cc460c6b76001171c548'
 },
 {
-  '_id': '5903bdadc240d4001158be93',
+  '_id': '5910cb8e0c6b76001171c426',
   'createdBy': {
-    '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts'
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans'
   },
-  'createdOn': '2017-04-28T22:09:49.193Z',
-  'maxPlayers': 32,
+  'createdOn': '2017-05-08T19:48:30.583Z',
+  'gameTemplate': {
+    '_id': 'Snake',
+    'id': 'Snake'
+  },
+  'players': [
+  {
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans'
+  }
+  ],
+  'maxPlayers': 3,
   'minPlayers': 2,
   'state': 'open',
-  'id': '5903bdadc240d4001158be93'
+  'id': '5910cb8e0c6b76001171c426'
 },
 {
-  '_id': '5903a160c66d5b0011fc2f5b',
-  'createdOn': '2017-04-28T20:09:04.447Z',
+  '_id': '5910caeb0c6b76001171c395',
   'createdBy': {
-    '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts'
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans'
   },
+  'createdOn': '2017-05-08T19:45:47.238Z',
+  'gameTemplate': {
+    '_id': 'Shanghai',
+    'id': 'Shanghai'
+  },
+  'players': [
+  {
+    '_id': 'bjce.timmermans@student.avans.nl',
+    'name': 'Brian Timmermans'
+  }
+  ],
   'maxPlayers': 32,
   'minPlayers': 2,
   'state': 'open',
-  'id': '5903a160c66d5b0011fc2f5b'
-},
-{
-  '_id': '59039b8cc66d5b0011fc2eca',
-  'createdOn': '2017-04-28T19:44:12.436Z',
-  'createdBy': {
-    '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts'
-  },
-  'maxPlayers': 32,
-  'minPlayers': 2,
-  'state': 'open',
-  'id': '59039b8cc66d5b0011fc2eca'
+  'id': '5910caeb0c6b76001171c395'
 }
 ];
 
