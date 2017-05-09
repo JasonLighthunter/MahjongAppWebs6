@@ -1,4 +1,4 @@
-import { CreatedByTimeStamp } from './createdByTimeStamp';
+import { User } from './user';
 
 export class Game {
   _id:         string;
@@ -7,7 +7,7 @@ export class Game {
   createdOn:   string;
   startedOn?:  string;
   endedOn?:    string;
-  createdBy:   CreatedByTimeStamp;
+  createdBy:   User;
   minPlayers:  number;
   maxPlayers:  number;
   // players

@@ -8,8 +8,7 @@ const GAMES: Game[] = [
   'createdOn': '2017-04-28T22:11:05.436Z',
   'createdBy': {
     '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts',
-    '__v': 0
+    'name': 'Wouter Aarts'
   },
   'maxPlayers': 32,
   'minPlayers': 2,
@@ -20,8 +19,7 @@ const GAMES: Game[] = [
   '_id': '5903bdadc240d4001158be93',
   'createdBy': {
     '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts',
-    '__v': 0
+    'name': 'Wouter Aarts'
   },
   'createdOn': '2017-04-28T22:09:49.193Z',
   'maxPlayers': 32,
@@ -34,8 +32,7 @@ const GAMES: Game[] = [
   'createdOn': '2017-04-28T20:09:04.447Z',
   'createdBy': {
     '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts',
-    '__v': 0
+    'name': 'Wouter Aarts'
   },
   'maxPlayers': 32,
   'minPlayers': 2,
@@ -47,8 +44,7 @@ const GAMES: Game[] = [
   'createdOn': '2017-04-28T19:44:12.436Z',
   'createdBy': {
     '_id': 'wm.aarts@student.avans.nl',
-    'name': 'Wouter Aarts',
-    '__v': 0
+    'name': 'Wouter Aarts'
   },
   'maxPlayers': 32,
   'minPlayers': 2,
