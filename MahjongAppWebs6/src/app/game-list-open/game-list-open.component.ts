@@ -24,7 +24,10 @@ export class GameListOpenComponent implements OnInit {
       .subscribe(
         games => {
           const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
-          this.gameList = games.filter(game => game.state === nameOfGameStateOpen);
+
+          const openGames = games.filter(game => game.state === nameOfGameStateOpen);
+          const openGamesNotFull = openGames.filter(game => game.players.length < game.maxPlayers);
+          this.gameList = openGamesNotFull;
 
           this.numberOfGames = this.gameList === null ? 0 : this.gameList.length;
         }

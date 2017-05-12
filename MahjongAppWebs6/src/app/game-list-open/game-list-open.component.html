@@ -9,12 +9,20 @@
       {{game.id}}
     </div>
     <div>
-      <label>state: </label>
-      {{game.state}}
+      <label>maxPlayers: </label>
+      {{game.maxPlayers}}
     </div>
     <div>
       <label>createdBy: </label>
       {{game.createdBy.name}}
+    </div>
+    <div>
+      <ul>
+        <li *ngFor="let player of game.players">
+          <label>name: </label>
+          {{player.name}}
+        </li>
+      </ul>
     </div>
   </li>
 </ul>
