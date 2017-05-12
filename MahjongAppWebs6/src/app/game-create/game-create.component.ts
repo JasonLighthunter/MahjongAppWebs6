@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+// import { GameService } from '../services/game.service';
 
 import { GameTemplate } from '../models/gameTemplate';
 import { PostGame } from '../models/postGame';
@@ -34,14 +36,21 @@ const GAMETEMPLATES: GameTemplate[] = [
   styleUrls: ['./game-create.component.scss']
 })
 
-export class GameCreateComponent {
-  gameTemplateList = GAMETEMPLATES;
+export class GameCreateComponent implements OnInit {
+  gameTemplateList: GameTemplate[];
 
-  model = new PostGame(this.gameTemplateList[0].id, 2, 2);
+  model: PostGame;
 
-  submitted = false;
+  submitted: boolean;
+  isValid: boolean;
 
-  isValid = false;
+  ngOnInit() {
+    this.gameTemplateList = GAMETEMPLATES;
+    this.isValid = false;
+    this.resetGameCreationForm();
+  }
+
+  // constructor(private gameService: GameService) {}
 
   onSubmit() { this.submitted = true; }
 
@@ -55,7 +64,7 @@ export class GameCreateComponent {
     }
   }
 
-  validateModel(): boolean{
+  validateModel(): boolean {
     if (this.model.minPlayers < 1 || this.model.minPlayers > 32) {
       return false;
     }
@@ -72,6 +81,7 @@ export class GameCreateComponent {
   }
 
   resetGameCreationForm() {
+    this.submitted = false;
     this.model = new PostGame(this.gameTemplateList[0].id, 2, 2);
   }
 }
