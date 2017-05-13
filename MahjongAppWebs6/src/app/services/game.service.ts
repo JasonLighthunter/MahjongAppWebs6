@@ -15,7 +15,8 @@ export class GameService {
 
   private _postHeaders = new Headers({
     'x-username': USERNAME,
-    'x-token': OAUTH_TOKEN
+    'x-token': OAUTH_TOKEN,
+    'Content-Type': 'application/json'
   });
 
   public games: BehaviorSubject<Game[]>;
@@ -32,11 +33,15 @@ export class GameService {
       }).toPromise();
   }
 
-  // public CreateGame(postGame) {
-  //   return this.http
-  //     .post(this._url, JSON.stringify(postGame), {headers: this._postHeaders})
-  //     .toPromise()
-  //     .then(res => res.json().data as Game)
-  //     .catch(this.handleError);
-  // }
+  public create(postGame) {
+    return this.http
+      .post(this._url, JSON.stringify(postGame), {headers: this._postHeaders})
+      .map(res =>  {
+        const newGame: Game = res.json();
+        const currentGames: Game[] = this.games.getValue();
+        currentGames.push(newGame);
+        this.games.next(currentGames);
+        return newGame;
+      });
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-// import { GameService } from '../services/game.service';
+import { GameService } from '../services/game.service';
 
 import { GameTemplate } from '../models/gameTemplate';
 import { PostGame } from '../models/postGame';
@@ -50,16 +50,19 @@ export class GameCreateComponent implements OnInit {
     this.resetGameCreationForm();
   }
 
-  // constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService) {}
 
   onSubmit() { this.submitted = true; }
 
   get diagnostic() { return JSON.stringify(this.model); }
 
   createGame() {
-    console.log(this.model);
+    // console.log(this.model);
     this.isValid = this.validateModel();
     if (this.isValid) {
+      this.gameService
+        .create(this.model)
+        .subscribe(game => console.log(game));
       console.log('succes: ' + this.model);
     }
   }
@@ -74,7 +77,7 @@ export class GameCreateComponent implements OnInit {
     if (this.model.minPlayers > this.model.maxPlayers) {
       return false;
     }
-    if (this.model.gameTemplateId === '') {
+    if (this.model.templateName === '') {
       return false;
     }
     return true;
@@ -82,6 +85,9 @@ export class GameCreateComponent implements OnInit {
 
   resetGameCreationForm() {
     this.submitted = false;
-    this.model = new PostGame(this.gameTemplateList[0].id, 2, 2);
+    this.model = new PostGame();
+    this.model.templateName = this.gameTemplateList[0].id;
+    this.model.maxPlayers = 4;
+    this.model.minPlayers = 2;
   }
 }

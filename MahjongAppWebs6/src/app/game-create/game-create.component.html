@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="template">Select template:</label>
-            <select class="form-control" id="template" required [(ngModel)]="model.gameTemplateId" name="gameTemplateId">
+            <select class="form-control" id="template" required [(ngModel)]="model.templateName" name="templateName">
               <option *ngFor="let game of gameTemplateList" [value]="game.id">{{game.id}}</option>
             </select>
           </div>
