@@ -33,4 +33,12 @@ export class GameListOpenComponent implements OnInit {
         }
       );
   }
+
+  joinGame(gameId) {
+    var game = this.gameList.filter(game => game.id === gameId);
+    if(game.length === 1){
+      // console.log(this.gameList.filter(game => game.id === gameId)[0]);
+      this.gameService.joinGame(gameId);
+    }
+  }
 }
