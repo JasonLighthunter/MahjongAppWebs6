@@ -33,4 +33,8 @@ export class GameService {
     //     this.gamesSub.next(response.json());
     //   }).toPromise();
   }
+
+  public joinGame(gameId){
+    console.log(gameId);
+  }
 }
