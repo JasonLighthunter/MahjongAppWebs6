@@ -14,3 +14,9 @@ export class Game {
   players:      [User];
   state:        string;
 }
+
+export enum GameStateEnum {
+  finished,
+  open,
+  playing
+}

@@ -10,7 +10,6 @@ import { Game } from '../models/game';
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent implements OnInit {
-  // gameList = GAMES;
   gameList: Game[];
   numberOfGames: number;
 
@@ -21,15 +20,14 @@ export class GameListComponent implements OnInit {
   }
 
   getGames() {
-    this.gameService.games.subscribe(
-      games => {
-        this.gameList = games;
-        if (this.gameList === null) {
-          this.numberOfGames = 0;
-        } else {
-          this.numberOfGames = this.gameList.length;
-        }
+    this.gameService.games
+    .subscribe(games => {
+      this.gameList = games;
+      if (this.gameList === null) {
+        this.numberOfGames = 0;
+      } else {
+        this.numberOfGames = this.gameList.length;
       }
-    );
+    });
   }
 }

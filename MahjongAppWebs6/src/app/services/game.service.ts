@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
+import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -28,20 +29,20 @@ export class GameService {
 
   public refresh() {
     this.http.get(this._url)
-      .map((response) => {
-        this.games.next(response.json());
-      }).toPromise();
+    .map((response) => {
+      this.games.next(response.json());
+    }).toPromise();
   }
 
   public create(postGame) {
     return this.http
-      .post(this._url, JSON.stringify(postGame), { headers: this._postHeaders })
-      .map(res =>  {
-        const newGame: Game = res.json();
-        const currentGames: Game[] = this.games.getValue();
-        currentGames.push(newGame);
-        this.games.next(currentGames);
-        return newGame;
-      });
+    .post(this._url, JSON.stringify(postGame), { headers: this._postHeaders })
+    .map(res =>  {
+      const newGame: Game = res.json();
+      const currentGames: Game[] = this.games.getValue();
+      currentGames.push(newGame);
+      this.games.next(currentGames);
+      return newGame;
+    });
   }
 }
