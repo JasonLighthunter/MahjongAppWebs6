@@ -35,6 +35,16 @@ export class GameService {
   }
 
   public joinGame(gameId){
+    return this.http
+    //   .post(this._url +'/'+gameId+'/players', JSON.stringify(gameId), { headers: this._postHeaders })
+    //   .map(res =>  {
+    //     const newGame: Game = res.json();
+    //     const currentGames: Game[] = this.games.getValue();
+    //     currentGames.push(newGame);
+    //     this.games.next(currentGames);
+    //     return newGame;
+    //   });
     console.log(gameId);
   }
+
 }
