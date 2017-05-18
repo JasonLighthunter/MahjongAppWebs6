@@ -35,7 +35,7 @@ export class GameService {
 
   public create(postGame) {
     return this.http
-      .post(this._url, JSON.stringify(postGame), {headers: this._postHeaders})
+      .post(this._url, JSON.stringify(postGame), { headers: this._postHeaders })
       .map(res =>  {
         const newGame: Game = res.json();
         const currentGames: Game[] = this.games.getValue();
