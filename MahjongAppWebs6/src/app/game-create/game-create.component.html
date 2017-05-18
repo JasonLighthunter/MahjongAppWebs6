@@ -1,0 +1,49 @@
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createGameModal">New Game</button>-->
+
+<!--&lt;!&ndash;&lt;!&ndash; Modal &ndash;&gt;&ndash;&gt;-->
+<!--<div id="createGameModal" class="modal fade">-->
+<div class="col-md-6">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <form (ngSubmit)="onSubmit()" #gameForm="ngForm">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="resetGameCreationForm();" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create new game</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="minPlayers">Minimal player amount:</label>
+            <input class="form-control" type="number" value id="minPlayers" min="1" max="32" required [(ngModel)]="model.minPlayers" name="minPlayers">
+          </div>
+
+          <!--<hr>-->
+
+          <div class="form-group">
+            <label for="maxPlayers">Maximal player amount:</label>
+            <input class="form-control" type="number" id="maxPlayers" min="1" max="32" required [(ngModel)]="model.maxPlayers" name="maxPlayers">
+          </div>
+
+          <!--<hr>-->
+
+          <div class="form-group">
+            <label for="template">Select template:</label>
+            <select class="form-control" id="template" required [(ngModel)]="model.templateName" name="templateName">
+              <option *ngFor="let game of gameTemplateList" [value]="game.id">{{game.id}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="resetGameCreationForm();" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" (click)="createGame(); resetGameCreationForm();" data-dismiss="modal" [disabled]="!gameForm.form.valid">Create</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!--</div>-->

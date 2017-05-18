@@ -20,18 +20,16 @@ export class GameListOpenComponent implements OnInit {
   }
 
   getGames() {
-    this.gameService.games$
-      .subscribe(
-        games => {
-          const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
+    this.gameService.games
+    .subscribe(games => {
+      const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
 
-          const openGames = games.filter(game => game.state === nameOfGameStateOpen);
-          const openGamesNotFull = openGames.filter(game => game.players.length < game.maxPlayers);
-          this.gameList = openGamesNotFull;
+      const openGames = games.filter(game => game.state === nameOfGameStateOpen);
+      const openGamesNotFull = openGames.filter(game => game.players.length < game.maxPlayers);
+      this.gameList = openGamesNotFull;
 
-          this.numberOfGames = this.gameList === null ? 0 : this.gameList.length;
-        }
-      );
+      this.numberOfGames = this.gameList === null ? 0 : this.gameList.length;
+    });
   }
 
   joinGame(gameId) {
