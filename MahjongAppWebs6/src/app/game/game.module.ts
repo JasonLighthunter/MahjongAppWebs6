@@ -3,20 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { GameService } from '../services/game.service';
 
-import { GameListComponent } from '../game-list/game-list.component';
-import { GameListOpenComponent } from '../game-list-open/game-list-open.component';
+import { FormsModule } from '@angular/forms';
 
+import { GameListComponent } from '../game-list/game-list.component';
+import { GameCreateComponent } from '../game-create/game-create.component';
+import { GameListOpenComponent } from '../game-list-open/game-list-open.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
-  declarations: [
+    declarations: [
     GameListComponent,
-    GameListOpenComponent
+    GameCreateComponent
   ], exports: [
     GameListComponent,
-    GameListOpenComponent
+    GameListOpenComponent,
+    GameCreateComponent
   ],
   providers: [
     GameService
