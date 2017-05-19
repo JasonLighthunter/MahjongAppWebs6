@@ -16,6 +16,7 @@ import { GameListOpenComponent } from '../game-list-open/game-list-open.componen
   ],
     declarations: [
     GameListComponent,
+    GameListOpenComponent,
     GameCreateComponent
   ], exports: [
     GameListComponent,

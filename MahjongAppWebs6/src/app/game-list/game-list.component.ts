@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../services/game.service';
 
-import { Game } from '../models/game';
+import { Game, GameStateEnum } from '../models/game';
 
 @Component({
   selector: 'app-game-list',
@@ -12,6 +12,7 @@ import { Game } from '../models/game';
 export class GameListComponent implements OnInit {
   gameList: Game[];
   numberOfGames: number;
+  nameOfGameStateOpen = GameStateEnum[GameStateEnum.open]
 
   constructor(private gameService: GameService) {}
 
@@ -29,5 +30,16 @@ export class GameListComponent implements OnInit {
         this.numberOfGames = this.gameList.length;
       }
     });
+  }
+
+  joinGame(gameId) {
+    var game = this.gameList.filter(game => game.id === gameId);
+    if(game.length === 1){
+      // console.log(this.gameList.filter(game => game.id === gameId)[0]);
+      this.gameService.joinGame(gameId) .subscribe(
+        game  => console.log(game),
+        error =>  alert(error)
+      );
+    }
   }
 }
