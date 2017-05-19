@@ -1,34 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../services/game.service';
+import { GameTemplateService } from '../services/gameTemplate.service';
 
 import { GameTemplate } from '../models/gameTemplate';
 import { PostGame } from '../models/postGame';
-
-const GAMETEMPLATES: GameTemplate[] = [
-  {
-    '_id': 'Shanghai',
-    'id': 'Shanghai',
-    'tiles': [
-      {
-        'xPos': 0,
-        'yPos': 0,
-        'zPos': 0
-      }
-    ]
-  },
-  {
-    '_id': 'Dragon',
-    'id': 'Dragon',
-    'tiles': [
-      {
-        'xPos': 0,
-        'yPos': 0,
-        'zPos': 0
-      }
-    ]
-  }
-];
 
 @Component({
   selector: 'app-game-create',
@@ -45,12 +21,13 @@ export class GameCreateComponent implements OnInit {
   isValid: boolean;
 
   ngOnInit() {
-    this.gameTemplateList = GAMETEMPLATES;
+    
+    this.getGameTemplates();
     this.isValid = false;
     this.resetGameCreationForm();
   }
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService, private gameTemplateService: GameTemplateService) {}
 
   onSubmit() { this.submitted = true; }
 
@@ -83,10 +60,17 @@ export class GameCreateComponent implements OnInit {
     return true;
   }
 
+  getGameTemplates() {
+    this.gameTemplateService.gameTemplates
+    .subscribe(templates => {
+      this.gameTemplateList = templates;
+    });
+  }
+
   resetGameCreationForm() {
     this.submitted = false;
     this.model = new PostGame();
-    this.model.templateName = this.gameTemplateList[0].id;
+    // this.model.templateName = this.gameTemplateList[0].id;
     this.model.maxPlayers = 4;
     this.model.minPlayers = 2;
   }

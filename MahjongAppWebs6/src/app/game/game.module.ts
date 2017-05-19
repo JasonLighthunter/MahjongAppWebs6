@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GameService } from '../services/game.service';
+import { GameTemplateService } from '../services/gameTemplate.service';
 
 import { FormsModule } from '@angular/forms';
 
@@ -24,7 +25,8 @@ import { GameListOpenComponent } from '../game-list-open/game-list-open.componen
     GameCreateComponent
   ],
   providers: [
-    GameService
+    GameService,
+    GameTemplateService
   ]
 })
 
