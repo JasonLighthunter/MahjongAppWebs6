@@ -12,6 +12,7 @@ import { Game, GameStateEnum } from '../models/game';
 export class GameListOpenComponent implements OnInit {
   gameList: Game[];
   numberOfGames: number;
+  nameOfGameStateOpen = GameStateEnum[GameStateEnum.open]
 
   constructor(private gameService: GameService) {}
 
@@ -22,13 +23,25 @@ export class GameListOpenComponent implements OnInit {
   getGames() {
     this.gameService.games
     .subscribe(games => {
-      const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
+      // const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
 
-      const openGames = games.filter(game => game.state === nameOfGameStateOpen);
+      const openGames = games.filter(game => game.state === this.nameOfGameStateOpen);
       const openGamesNotFull = openGames.filter(game => game.players.length < game.maxPlayers);
       this.gameList = openGamesNotFull;
 
       this.numberOfGames = this.gameList === null ? 0 : this.gameList.length;
     });
   }
+
+  joinGame(gameId) {
+    var game = this.gameList.filter(game => game.id === gameId);
+    if(game.length === 1){
+      // console.log(this.gameList.filter(game => game.id === gameId)[0]);
+      this.gameService.joinGame(gameId) .subscribe(
+        game  => console.log(game),
+        error =>  alert(error)
+      );
+    }
+  }
+
 }

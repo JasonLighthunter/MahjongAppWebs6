@@ -1,28 +1,39 @@
-<ul class="open-games">
-  <div>
+<div class="card">
+  <div class="card-block">
     <label>number of open games: </label>
-    {{numberOfGames}}
+    <p>{{numberOfGames}}</p>
   </div>
-  <li *ngFor="let game of gameList">
-    <div>
-      <label>id: </label>
-      {{game.id}}
-    </div>
-    <div>
-      <label>maxPlayers: </label>
-      {{game.maxPlayers}}
-    </div>
-    <div>
-      <label>createdBy: </label>
-      {{game.createdBy.name}}
-    </div>
-    <div>
-      <ul>
-        <li *ngFor="let player of game.players">
-          <label>name: </label>
-          {{player.name}}
-        </li>
-      </ul>
-    </div>
-  </li>
-</ul>
+</div>
+<div class="pre-scrollable">
+  <ul class="open-games list-group">
+    <li class="list-group-item list-group-item-action" *ngFor="let game of gameList">
+      <div class="content">
+        <div class="row">
+          <label class="col-md-4">id: </label>
+          <p class="col-md-8">{{game.id}}</p>
+        </div>
+        <div class="row">
+          <label class="col-md-4">maxPlayers: </label>
+          <p class="col-md-8">{{game.maxPlayers}}</p>
+        </div>
+        <div class="row">
+          <label class="col-md-4">createdBy: </label>
+          <p class="col-md-8">{{game.createdBy.name}}</p>
+        </div>
+        <div class="row">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let player of game.players">
+                <label>name: </label>
+                <p>{{player.name}}</p>
+              </li>
+            </ul>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" [ngClass]="{'disabled': ((game.players.length >= game.maxPlayers) || (game.state !== nameOfGameStateOpen)) }" (click)="joinGame(game.id)">
+            Join game
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
