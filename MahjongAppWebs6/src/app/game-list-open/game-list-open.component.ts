@@ -23,7 +23,6 @@ export class GameListOpenComponent implements OnInit {
   getGames() {
     this.gameService.games
     .subscribe(games => {
-      // const nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
       if (games !== null) {
         console.log(games);
         const openGames = games.filter(game => game.state === this.nameOfGameStateOpen);
@@ -38,12 +37,10 @@ export class GameListOpenComponent implements OnInit {
   joinGame(gameId) {
     const games = this.gameList.filter(game => game.id === gameId);
     if (games.length === 1) {
-      // console.log(this.gameList.filter(game => game.id === gameId)[0]);
       this.gameService.joinGame(gameId) .subscribe(
         game  => console.log(game),
         error =>  alert(error)
       );
     }
   }
-
 }
