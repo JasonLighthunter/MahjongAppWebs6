@@ -19,18 +19,7 @@ export class GameListOpenComponent implements OnInit {
   ngOnInit() {
     this.getGames();
   }
-  // getGames() {
-  //   this.gameService.games
-  //   .subscribe(games => {
-  //     console.log(games);
-  //     this.gameList = games;
-  //     if (this.gameList === null) {
-  //       this.numberOfGames = 0;
-  //     } else {
-  //       this.numberOfGames = this.gameList.length;
-  //     }
-  //   });
-  // }
+
   getGames() {
     this.gameService.games
     .subscribe(games => {
