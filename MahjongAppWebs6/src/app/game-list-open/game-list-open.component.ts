@@ -23,13 +23,14 @@ export class GameListOpenComponent implements OnInit {
   getGames() {
     this.gameService.games
     .subscribe(games => {
-      if (games !== null) {
-        console.log(games);
+      this.gameList = games;
+      if (this.gameList === null) {
+        this.numberOfGames = 0;
+      } else {
         const openGames = games.filter(game => game.state === this.nameOfGameStateOpen);
         const openGamesNotFull = openGames.filter(game => game.players.length < game.maxPlayers);
         this.gameList = openGamesNotFull;
-
-        this.numberOfGames = this.gameList === null ? 0 : this.gameList.length;
+        this.numberOfGames = this.gameList.length;
       }
     });
   }

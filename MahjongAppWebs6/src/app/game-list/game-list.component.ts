@@ -28,7 +28,6 @@ export class GameListComponent implements OnInit {
   getGames() {
     this.gameService.games
     .subscribe(games => {
-      console.log("refreshed");
       this.gameList = games;
       if (this.gameList === null) {
         this.numberOfGames = 0;
