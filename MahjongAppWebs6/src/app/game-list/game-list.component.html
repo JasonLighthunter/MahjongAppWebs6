@@ -32,6 +32,9 @@
           <button class="btn btn-primary" [ngClass]="{'disabled': ((game.players.length >= game.maxPlayers) || (game.state !== nameOfGameStateOpen)) }" (click)="joinGame(game.id)">
             Join game
           </button>
+          <button class="btn btn-success" *ngIf="game.createdBy._id === currentUser" [ngClass]="{'disabled': (game.state !== nameOfGameStateOpen) }" (click)="startGame(game.id)">
+            Start game
+          </button>
         </div>
       </div>
     </li>
