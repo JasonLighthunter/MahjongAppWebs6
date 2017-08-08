@@ -21,9 +21,11 @@ export class GameService {
   });
 
   public games: BehaviorSubject<Game[]>;
+  public game: BehaviorSubject<Game>;
 
   constructor(private http: Http) {
     this.games = new BehaviorSubject<Game[]>(null);
+    this.game = new BehaviorSubject<Game>(null);
     this.refresh();
   }
 
@@ -75,6 +77,14 @@ export class GameService {
       errMsg = error.message ? error.message : error.toString();
     }
     return Observable.throw(errMsg);
+  }
+
+  public getGame(gameId: string){//
+    this.http.get(this._url + "/" + gameId)
+      .map((response) => {
+        this.game.next(response.json());
+      }).toPromise()
+      .catch(this.handleError);
   }
 
 }

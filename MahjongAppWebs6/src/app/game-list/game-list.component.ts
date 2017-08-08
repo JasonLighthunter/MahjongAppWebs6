@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 import { GameService } from '../services/game.service';
 
@@ -17,6 +17,7 @@ export class GameListComponent implements OnInit {
   numberOfGames: number;
   nameOfGameStateOpen = GameStateEnum[GameStateEnum.open];
   currentUser : string;
+  @Output() onGameSelected = new EventEmitter<string>();
 
   constructor(private gameService: GameService) {}
 
@@ -63,5 +64,9 @@ export class GameListComponent implements OnInit {
     } else {
       alert('No game selected');
     }
+  }
+
+  showGame(gameId: string) {
+    this.onGameSelected.emit(gameId);
   }
 }

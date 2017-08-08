@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MahjongJobSteven';
+  selectedGameId: string;
+
+  onGameSelected(gameId: string) {
+    this.selectedGameId = gameId;
+  }
 }
