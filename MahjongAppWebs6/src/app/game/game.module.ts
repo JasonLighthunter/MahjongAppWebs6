@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { GameListComponent } from '../game-list/game-list.component';
 import { GameCreateComponent } from '../game-create/game-create.component';
 import { GameListOpenComponent } from '../game-list-open/game-list-open.component';
+import { GamePreviewComponent } from '../game-preview/game-preview.component';
 
 @NgModule({
   imports: [
@@ -18,11 +19,13 @@ import { GameListOpenComponent } from '../game-list-open/game-list-open.componen
     declarations: [
     GameListComponent,
     GameListOpenComponent,
-    GameCreateComponent
+    GameCreateComponent,
+    GamePreviewComponent
   ], exports: [
     GameListComponent,
     GameListOpenComponent,
-    GameCreateComponent
+    GameCreateComponent,
+    GamePreviewComponent
   ],
   providers: [
     GameService,

@@ -15,13 +15,15 @@ import { PostGame } from '../models/postGame';
 export class GameCreateComponent implements OnInit {
   gameTemplateList: GameTemplate[];
 
+  currentTemplateName: string;
+  public currentTemplate: GameTemplate;
+
   model: PostGame;
 
   submitted: boolean;
   isValid: boolean;
 
   ngOnInit() {
-    
     this.getGameTemplates();
     this.isValid = false;
     this.resetGameCreationForm();
@@ -34,13 +36,21 @@ export class GameCreateComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.model); }
 
   createGame() {
-    // console.log(this.model);
+    this.model.templateName = this.currentTemplateName;
     this.isValid = this.validateModel();
     if (this.isValid) {
       this.gameService
         .create(this.model)
         .subscribe(game => console.log(game));
       console.log('succes: ' + this.model);
+    }
+  }
+
+  onChange() {
+    for (let i = 0; i < this.gameTemplateList.length; i++) {
+      if (this.gameTemplateList[i].id === this.currentTemplateName) {
+        this.currentTemplate = this.gameTemplateList[i];
+      }
     }
   }
 
@@ -60,10 +70,18 @@ export class GameCreateComponent implements OnInit {
     return true;
   }
 
+  logTemplate() {
+    console.log(this.currentTemplate);
+  }
+
   getGameTemplates() {
     this.gameTemplateService.gameTemplates
     .subscribe(templates => {
       this.gameTemplateList = templates;
+      console.log(this.gameTemplateList);
+      if (this.gameTemplateList != null) {
+        this.currentTemplate = this.gameTemplateList[0];
+      }
     });
   }
 

@@ -18,7 +18,7 @@
 
     <div class="form-group">
       <label for="template">Select template:</label>
-      <select class="form-control" id="template" required [(ngModel)]="model.templateName" name="templateName">
+      <select (change)="onChange()" class="form-control" id="template" required [(ngModel)]="currentTemplateName" name="templateName">
         <option *ngFor="let game of gameTemplateList" [value]="game.id">{{game.id}}</option>
       </select>
     </div>
@@ -26,4 +26,6 @@
     <!--<button type="button" class="btn btn-default" (click)="resetGameCreationForm();" data-dismiss="modal">Close</button>-->
     <button type="submit" class="btn btn-success" (click)="createGame(); resetGameCreationForm();" data-dismiss="modal" [disabled]="!gameForm.form.valid">Create</button>
   </form>
+  <button (click)="logTemplate();"></button>
+  <app-game-preview [currentTemplate]="currentTemplate"></app-game-preview>
 </div>
